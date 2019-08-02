@@ -4,7 +4,7 @@ import (
     "fmt"
     "math"
     "runtime"
-    
+    "time"
 )
 
 
@@ -31,9 +31,9 @@ func Sqrt(x float64) float64 {
 
 
 func main() {
-    //FOR
+    //FOR and DEFER
     for i := 0; i <=5; i++ {
-    fmt.Printf("%T %v\n", i, i)
+    defer fmt.Printf("%T %v\n", i, i)
     }
     //WHILE but FOR
     sum := 1
@@ -72,4 +72,38 @@ case "darwin": fmt.Println("OS X")
 case "linux": fmt.Printf("Linux %s", os)
 default: //freebsd openbsd plan9 windows
     fmt.Printf("%s, \n", os) }
+	
+	
+today := time.Now().Weekday()
+fmt.Println("\nWhen is monday?")	
+switch time.Saturday {
+case today%7 + 0:
+		fmt.Println("Today.")
+	case today%7 + 1:
+		fmt.Println("Tomorrow.")
+	case today%7 + 2:
+		fmt.Println("In two days.")	
+	case today%7 + 3:
+		fmt.Println("In three days.")
+	default:
+		fmt.Println("Too far away.")
+	}	
+		t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
 	}
+	
+	// DEFER
+		fmt.Println("counting")
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)}
+	fmt.Println("done")
+			
+	}
+	
+	
