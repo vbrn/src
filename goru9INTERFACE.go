@@ -77,19 +77,34 @@ func TotalScale(f float64, items ...Total) {
 	}
 }
 
-
-
-
-//INTERFACE2 (PRODVINUTIY)
-type MultiShape struct {
-    items []Total
+//EMPTY INTERFACE can get any type
+func Print_it(item ...interface{}) {
+	fmt.Printf("\n %T type, %v value", item, item)
 }
-func (self *MultiShape) area() float64 {
-    var area float64
-    for _, item := range self.items {
-        area += item.area()
-    }
-    return area}
+func describe(i interface{}) {
+	fmt.Printf("(%v, %T)\n", i, i)
+}
+
+//EMPTY INTERFACE AND SWITCHES
+func do(i interface{}) {
+	switch v := i.(type) {
+	case int:
+		fmt.Printf("Twice %v is %v\n", v, v*2)
+	case string:
+		fmt.Printf("%q is %v bytes long\n", v, len(v))
+	default:
+		fmt.Printf("I don't know about type %T!\n", v)
+	}
+}
+
+
+//FMT STRING() interface
+//fmt package has type Stringer interface { String() string} that can be used following wayn
+type People struct {name string; poll string; age int}
+func (self *People) String() string {
+	return fmt.Sprintf("This person is %v %v %v", self.name, self.age, self.poll)
+
+}
 
 func main() {
 	//SIMPLE METHOD
@@ -125,10 +140,27 @@ func main() {
 	fmt.Println("TotalArea of square and Circle after 3d scale",  TotalArea(&c3, &s3))
 	fmt.Println("TotalPerimetr of square and Circle after scale ", TotalPerimetr(&c3, &s3))
 	
-	//INTERFACE2
-	fmt.Println("\nINTERFACE 2")
-	//var items = []Total{&c3, &s3}
-	//var multi_shape = MultiShape(items)
-	//fmt.Println("\nMultiShape area of square and Circle is ", multi_shape.area())
+	fmt.Println("\nEMPTY INTERFACE")
+	Print_it(2)
+	Print_it(2.32)
+	Print_it("THIS IS STRING")
+	fmt.Println("\n")
+	var i interface{}
+	describe(i)
+	i = 42
+	describe(i)
+	i = "hello"
+	describe(i)
+	
+	fmt.Println("\nEmtpy Interface and Switches")
+	do(21)
+	do("hello")
+	do(true)
+
+	//STRINGER BUILD IN TO fmt interface
+	fmt.Println("\n Now stringer interface to fmt comes")
+	var p1 = People{"Bob", "m", 23}
+	var p2 = People{"Lana", "z", 19}
+	fmt.Println(&p1, &p2)
 
 }
