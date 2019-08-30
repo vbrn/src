@@ -15,5 +15,8 @@ func init() {
 	Foo = "Zuka"
 	}
 
+//SHOULD BE make 
+//go install 
+//in the folder mypack
 
 
