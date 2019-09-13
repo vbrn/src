@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ .Title}}</title>
+    </head>
+    <body>
+    {{if lt .Hour_now 18}}
+    <p>Добрый вечер</p>
+     {{else if lt .Hour_now 12 }}
+    <p>Доброе утро</p>
+    {{end}}
+    
+    
+        <h1>{{ .Title}}</h1>
+        <ul>
+            {{range .Users}}
+                <li><b>{{ . }}</b></li>
+            {{else}}
+            <h1>List is empty</h1><br>
+            {{end}}
+        </ul>
+        <ol>
+        	{{range .Users_full}}
+        	
+        	<li>name: {{ .Name}} age: {{.Age}} {{if gt .Age 20}} Старикашка{{end}}  {{ if .Gay}} <b> ПИДОРАС! </b>{{end}} </li>
+        	
+        	{{end}}
+        </ol>
+        
+        
+    </body>
+</html>
+
+

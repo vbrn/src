@@ -18,6 +18,7 @@ func main() {
             Message: "FIFA will never regret it",
         }
         tmpl, _ := template.ParseFiles("server6_templates/index.html")
+        
         tmpl.Execute(w, data)
     })
  
