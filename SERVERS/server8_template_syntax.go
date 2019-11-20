@@ -41,7 +41,7 @@ func main() {
 	Title: "Users list",
 	Users: []string{"tom", "bob", "sam",},
 	Users_full : []User{
-            User{Name: "Tom", Age: 18, Gay: false},
+            User{Name: "Tom", Age: 32, Gay: false},
             User{Name: "Miscevige", Age: 23, Gay: true},
             User{Name: "Hubbard", Age: 15, Gay: true},},
 	}
